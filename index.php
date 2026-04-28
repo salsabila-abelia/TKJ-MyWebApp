@@ -4,107 +4,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Proyekku</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>✨ Galeri Proyek Estetik✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* --- Mantra Warna & Animasi --- */
         :root {
-            --gradient-main: linear-gradient(135deg, #FF80BF 0%, #944DFF 50%, #4DFFFF 100%);
-            --primary: #751AFF; 
-            --primary-hover: #5C00E6;
-            --bg-color: #F8FAFC; 
-            --card-bg: rgba(255, 255, 255, 0.9); 
-            --text-dark: #1E293B;
-            --text-muted: #64748B;
+            --pink-deep: #FFB7B2;
+            --purple-deep: #B5A2FF;
+            --blue-deep: #A2E1FF;
+            --main-accent: #B5A2FF;
+            --text-color: #5D5D5D; 
+            --text-muted: #8E7AB5;
+            
+            --glass-bg: rgba(255, 255, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: rgba(181, 162, 255, 0.2);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popUpModal {
+            0% { transform: scale(0.5) translateY(50px); opacity: 0; }
+            60% { transform: scale(1.02) translateY(-10px); opacity: 1; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        @keyframes hologramGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         body { 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            padding: 0;
-            background-color: var(--bg-color); 
-            background-image: linear-gradient(135deg, rgba(255, 128, 191, 0.1) 0%, rgba(148, 77, 255, 0.1) 50%, rgba(77, 255, 255, 0.1) 100%);
-            color: var(--text-dark); 
+            font-family: 'Quicksand', sans-serif; 
+            margin: 0; padding: 0;
+            background: linear-gradient(-45deg, #FFD1DC, #E6E6FA, #D4F0F0, #FFC4E1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-color); 
+            min-height: 100vh;
+            overflow-x: hidden;
+            letter-spacing: 0.3px;
         }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px 20px; }
 
         .header {
-            background: var(--gradient-main);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2);
-            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 2px solid var(--glass-border);
+            padding: 50px 20px; text-align: center; margin-bottom: 60px;
+            animation: fadeInDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            box-shadow: 0 10px 40px var(--glass-shadow);
+            position: relative; z-index: 10;
         }
         
-        .header h1 { margin: 0; font-size: 36px; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        .header p { margin: 12px 0 0 0; opacity: 0.9; font-weight: 300; font-size: 16px; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        .form-card { 
-            background: var(--card-bg); 
-            padding: 35px; 
-            border-radius: 20px; 
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
-            margin-bottom: 60px; 
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 1px solid rgba(255,255,255,0.3); 
-            backdrop-filter: blur(5px); 
+        .header h1 { 
+            margin: 0; font-size: 42px; font-weight: 700; color: var(--main-accent);
+            text-shadow: 2px 2px 5px rgba(255,255,255,0.8), 0 0 15px rgba(181, 162, 255, 0.3); 
+            letter-spacing: 1.5px;
+        }
+        
+        .header p { 
+            margin: 15px 0 0 0; font-weight: 600; font-size: 20px; color: var(--text-muted); 
+            min-height: 30px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
         }
 
-        .form-card h2 { margin-top: 0; color: var(--primary); text-align: center; margin-bottom: 30px; font-size: 24px; }
+        .typed-cursor {
+            color: #FF80BF;
+            font-size: 22px;
+            text-shadow: 0 0 10px rgba(255, 128, 191, 0.7);
+        }
 
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 14px; color: var(--text-dark); }
+        .btn-add-popup {
+            position: fixed; bottom: 40px; right: 40px;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #FFB7B2, #E6E6FA, #D4F0F0);
+            background-size: 300% 300%;
+            animation: hologramGlow 4s ease infinite;
+            color: #555; 
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50px; font-weight: 700; font-size: 19px;
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Quicksand', sans-serif; letter-spacing: 1.2px;
+            box-shadow: 0 12px 25px rgba(181, 162, 255, 0.4);
+            z-index: 100; text-transform: uppercase;
+        }
+        .btn-add-popup:hover { 
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 18px 35px rgba(181, 162, 255, 0.6);
+            color: var(--main-accent);
+        }
+
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(181, 162, 255, 0.1);
+            backdrop-filter: blur(10px) saturate(150%);
+            -webkit-backdrop-filter: blur(10px) saturate(150%);
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.35);
+            padding: 50px 40px; border-radius: 30px;
+            box-shadow: 0 20px 50px var(--glass-shadow), inset 0 0 0 2px var(--glass-border);
+            width: 100%; max-width: 600px;
+            margin: 8% auto;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            animation: popUpModal 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            position: relative;
+            border: 1px solid var(--glass-border);
+        }
+        .close-modal {
+            position: absolute; top: 25px; right: 30px;
+            font-size: 32px; font-weight: bold; 
+            background: linear-gradient(135deg, #FF9AA2, #B5A2FF);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .close-modal:hover { color: #FF9AA2; transform: scale(1.2) rotate(90deg); }
+
+        .form-card h2 { 
+            margin-top: 0; color: var(--main-accent); text-align: center;
+            margin-bottom: 35px; font-size: 28px; font-weight: 700;
+        }
+
+        .form-group { margin-bottom: 30px; }
+
+        /* --- LABEL TEKS GRADASI GELAP BANGET --- */
+        .form-group label { 
+            display: block; 
+            font-weight: 800; /* Dibuat lebih tebal */
+            margin-bottom: 12px; 
+            font-size: 16px;
+            margin-left: 10px;
+            /* Pakai warna Midnight / Deep Gradient */
+            background: linear-gradient(135deg, #880E4F 0%, #311B92 50%, #0D47A1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.8px;
+        }
         
         .form-control { 
-            width: 100%; padding: 14px 18px; border: 2px solid #E2E8F0; border-radius: 10px; 
-            font-family: 'Poppins', sans-serif; font-size: 14px; box-sizing: border-box; transition: all 0.3s ease; background-color: white;
+            width: 100%; padding: 18px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.4); 
+            border-radius: 18px;
+            font-family: 'Quicksand', sans-serif; font-size: 16px;
+            box-sizing: border-box; 
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.4); color: #222; /* Teks input juga digelapkan */
+            font-weight: 600;
         }
-        .form-control:focus { outline: none; border-color: #944DFF; box-shadow: 0 0 0 4px rgba(148, 77, 255, 0.2); }
-
-        button { 
-            width: 100%; padding: 16px 20px; background-color: var(--primary); color: white; border: none; border-radius: 10px; 
-            font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease; font-family: 'Poppins', sans-serif;
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        button:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(117, 26, 255, 0.3); }
-
-        .section-title {
-            text-align: center; margin-bottom: 40px; font-size: 28px; font-weight: 700;
-            background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        .form-control:focus { 
+            outline: none; 
+            border-color: #B5A2FF;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 15px rgba(181, 162, 255, 0.4);
+            transform: translateY(-2px);
         }
 
-        .grid-post { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; padding-bottom: 80px; }
+        .btn-submit { 
+            width: 100%; padding: 18px 25px;
+            background: linear-gradient(135deg, #FFB7B2, #E6E6FA, #D4F0F0);
+            background-size: 300% 300%;
+            animation: hologramGlow 4s ease infinite;
+            color: #555; border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 18px; font-weight: 700; font-size: 18px;
+            cursor: pointer; transition: all 0.4s ease;
+            font-family: 'Quicksand', sans-serif; letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
+
+        .grid-post { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 40px; padding-bottom: 20px;
+        }
 
         .card { 
-            background: var(--card-bg); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.35); border-radius: 28px;
+            overflow: hidden; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04), inset 0 0 0 2px var(--glass-border);
+            backdrop-filter: blur(12px) saturate(160%);
+            -webkit-backdrop-filter: blur(12px) saturate(160%);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; flex-direction: column;
+            animation: fadeInUp 0.8s ease forwards; opacity: 0;
+            border: 1px solid var(--glass-border);
         }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15); }
-        .card img { width: 100%; height: 240px; object-fit: cover; border-bottom: 2px solid rgba(148, 77, 255, 0.2); }
+        .card:hover { 
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(181, 162, 255, 0.4);
+        }
+        
+        .card img { 
+            width: 100%; height: 260px; object-fit: cover;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+        }
 
-        .card-body { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-        .card h3 { margin: 0 0 12px 0; font-size: 20px; color: var(--primary); font-weight: 600; }
-        .card p { color: var(--text-muted); font-size: 15px; line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
-        .card small { color: #94A3B8; font-size: 12px; border-top: 1px solid #E2E8F0; padding-top: 12px; display: block; font-weight: 300; }
+        .card-body { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; z-index: 1; background: inherit; }
+        .card h3 { margin: 0 0 15px 0; font-size: 24px; color: var(--main-accent); font-weight: 700; }
+        .card p { color: var(--text-color); font-size: 16px; line-height: 1.8; margin-bottom: 25px; flex-grow: 1; font-weight: 500;}
+        .card small { color: var(--text-muted); font-size: 13px; border-top: 1px dashed rgba(181, 162, 255, 0.3); padding-top: 18px; display: block; font-weight: 600; }
 
-        .action-buttons { display: flex; gap: 12px; margin-top: 18px; }
+        .action-buttons { display: flex; gap: 18px; margin-top: 25px; }
         .btn-edit, .btn-delete {
-            padding: 10px 15px; font-size: 13px; text-decoration: none; border-radius: 8px; text-align: center; flex: 1; color: white;
-            font-weight: 600; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;
+            padding: 14px 18px; font-size: 14px; text-decoration: none;
+            border-radius: 14px; text-align: center; flex: 1;
+            font-weight: 700; transition: all 0.3s ease;
         }
-        .btn-edit { background-color: #F59E0B; } 
-        .btn-edit:hover { background-color: #D97706; transform: translateY(-2px); }
-        .btn-delete { background-color: #EF4444; } 
-        .btn-delete:hover { background-color: #DC2626; transform: translateY(-2px); }
+        .btn-edit { background: linear-gradient(135deg, #FFF9D4, #FDE68A); color: #92400E; } 
+        .btn-delete { background: linear-gradient(135deg, #FFE4E4, #FECACA); color: #991B1B; }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+
+        ::-webkit-scrollbar { width: 10px; background-color: rgba(255,255,255,0.3); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(#FFB7B2, #B5A2FF); border-radius: 10px; }
 
         @media (max-width: 600px) {
-            .grid-post { grid-template-columns: 1fr; }
-            .header h1 { font-size: 28px; }
-            .form-card { padding: 25px; }
+            .grid-post { grid-template-columns: 1fr; gap: 30px; }
+            .header h1 { font-size: 32px; }
         }
     </style>
 </head>
@@ -112,29 +250,12 @@
 
 <div class="header">
     <h1>🚀 My Web App</h1>
-    <p>Simpan momen dan catatan proyekmu di sini</p>
+    <p><span id="teks-animasi"></span></p>
 </div>
 
-<div class="container">
-    <div class="form-card">
-        <h2>Buat Postingan Baru</h2>
-        <form action="proses.php" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Nama</label>
-                <input type="text" name="judul" class="form-control" required placeholder="Ketik nama kamu di sini...">
-            </div>
-            <div class="form-group">
-                <label>Ceritakan Sesuatu</label>
-                <textarea name="deskripsi" class="form-control" rows="4" required placeholder="Apa yang sedang kamu kerjakan?"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Upload Foto Pendukung</label>
-                <input type="file" name="foto" class="form-control" accept="image/*" required style="padding: 9px 15px;">
-            </div>
-            <button type="submit" name="submit">Bagikan Sekarang</button>
-        </form>
-    </div>
+<button class="btn-add-popup" id="openModalBtn">+ Buat Postingan ✨</button>
 
+<div class="container">
     <h2 class="section-title">Galeri Proyek Terbaru</h2>
     
     <div class="grid-post">
@@ -153,7 +274,6 @@
                 $tanggal = date('d M Y, H:i', strtotime($row['dibuat_pada']));
                 echo "<small>Diupload: " . $tanggal . "</small>";
                 
-                // Tombol Edit & Hapus
                 echo "<div class='action-buttons'>";
                 echo "<a href='edit.php?id=" . $row['id'] . "' class='btn-edit'>✏️ Edit</a>";
                 echo "<a href='hapus.php?id=" . $row['id'] . "' class='btn-delete' onclick='return confirm(\"Yakin mau hapus data ini?\")'>🗑️ Hapus</a>";
@@ -163,11 +283,62 @@
                 echo "</div>";
             }
         } else {
-            echo "<p style='text-align:center; grid-column: 1 / -1; color: #64748B;'>Belum ada postingan. Ayo buat yang pertama!</p>";
+            echo "<p style='text-align:center; grid-column: 1 / -1; color: var(--text-muted); font-weight: 600; font-size: 18px;'>Belum ada postingan. Ayo buat yang pertama!</p>";
         }
         ?>
     </div>
 </div>
+
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModalBtn">&times;</span>
+        <div class="form-card">
+            <h2>Buat Postingan Baru ✨</h2>
+            <form action="proses.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Nama Anda</label>
+                    <input type="text" name="judul" class="form-control" required placeholder="Ketik nama kamu di sini...">
+                </div>
+                <div class="form-group">
+                    <label>Ceritakan Sesuatu</label>
+                    <textarea name="deskripsi" class="form-control" rows="4" required placeholder="Apa yang sedang kamu kerjakan?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Foto Pendukung</label>
+                    <input type="file" name="foto" class="form-control" accept="image/*" required style="padding: 15px 20px;">
+                </div>
+                <button type="submit" name="submit" class="btn-submit">Bagikan Sekarang 🚀</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+    const modal = document.getElementById("addModal");
+    const openBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.getElementById("closeModalBtn");
+
+    openBtn.onclick = function() { modal.style.display = "block"; }
+    closeBtn.onclick = function() { modal.style.display = "none"; }
+    window.onclick = function(event) {
+        if (event.target == modal) { modal.style.display = "none"; }
+    }
+
+    var typed = new Typed('#teks-animasi', {
+        strings: [
+            'Simpan momen dan catatan proyekmu di sini...', 
+            'Tunjukkan karyamu disini ✨',
+            'Satu tempat untuk mengabadikan karyamu!',
+            'SEMANGAT! 🌸'
+        ],
+        typeSpeed: 60,
+        backSpeed: 40,
+        backDelay: 2500,
+        loop: true
+    });
+</script>
 
 </body>
 </html>
